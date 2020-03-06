@@ -35,4 +35,7 @@ public interface IConnectionHandler {
     @WebMethod
     void informDisconnect(int clientID);
 
+    @WebMethod
+    boolean didPlayerWin();
+
 }

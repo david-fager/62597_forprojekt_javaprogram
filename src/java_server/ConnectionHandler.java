@@ -132,4 +132,9 @@ public class ConnectionHandler implements IConnectionHandler {
         System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + clientID + " disconnected.");
     }
 
+    @Override
+    public boolean didPlayerWin() {
+        return galgelogik.erSpilletVundet();
+    }
+
 }

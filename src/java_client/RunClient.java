@@ -67,12 +67,12 @@ public class RunClient {
             System.out.println("#                                       #");
             System.out.println("#   VELKOMMEN TIL GALGELEG TERMINALEN   #");
             System.out.println("#                                       #");
-            System.out.println("#            SKRIV KOMMANDO             #");
-            System.out.println("#                > SPIL                 #");
-            System.out.println("#                > LUK                  #");
+            System.out.println("#             SKRIV KOMMANDO            #");
+            System.out.println("#             > SPIL                    #");
+            System.out.println("#             > LUK                     #");
             System.out.println("#                                       #");
             System.out.println("#########################################");
-            System.out.println("> ");
+            System.out.print("> ");
             input = scanner.nextLine().toLowerCase();
             if (input.equals("luk")) {
                 break;
@@ -82,15 +82,16 @@ public class RunClient {
                 System.out.println("#########################################");
                 System.out.println("#                                       #");
                 System.out.println("#            VÆLG ORDKATALOG            #");
-                System.out.println("#                > DR                   #");
-                System.out.println("#                > LOKAL                #");
+                System.out.println("#            > DR                       #");
+                System.out.println("#            > STANDARD                 #");
                 System.out.println("#                                       #");
                 System.out.println("#########################################");
-                System.out.println("> ");
+                System.out.print("> ");
                 input = scanner.nextLine().toLowerCase();
                 if(input.equals("dr")){
+                    System.out.println("Henter ord fra dr.dk");
                     gameLoop(1);
-                }else if(input.equals("lokal")) {
+                }else if(input.equals("standard")) {
                     gameLoop(2);
                 }
             }
@@ -106,9 +107,9 @@ public class RunClient {
         boolean success;
 
         do {
-            System.out.println("Brugernavn: ");
+            System.out.print("Brugernavn: ");
             username = scanner.nextLine();
-            System.out.println("Kodeord: ");
+            System.out.print("Kodeord: ");
             success = server.login(clientID, username, scanner.nextLine());
             if (success) {
                 System.out.println("Login succesfuldt");
@@ -120,7 +121,7 @@ public class RunClient {
         } while (!success);
     }
 
-    private void gameLoop(int j ) throws Exception {
+    private void gameLoop(int j) throws Exception {
         server.startGame(clientID, j);
 
         while (!server.isGameOver()) {
@@ -146,7 +147,11 @@ public class RunClient {
         }
 
         System.out.println("Ordet var: " + server.getWord());
-        System.out.println("Spillet er slut");
+        if (server.didPlayerWin()) {
+            System.out.println("Spillet er slut - du vandt!");
+        } else {
+            System.out.println("Spillet er slut - du tabte!");
+        }
     }
 
 }
