@@ -19,15 +19,14 @@ public class ConnectionHandler implements IConnectionHandler {
 
     private Galgelogik galgelogik;
     private HashMap<Integer, String> connections = new HashMap<>();
-    private Calendar calendar = Calendar.getInstance();
-    private DateFormat df = new SimpleDateFormat("[dd-MM-yyyy HH:mm:ss] - ");
+    private DateFormat df = new SimpleDateFormat("[dd-MM-yyyy HH:mm:ss] ");
 
     public void serverStatus() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                System.out.println(df.format(calendar.getTimeInMillis()) + "server is running");
+                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Server is running");
 
                 if (connections.size() > 0) {
                     System.out.println("Active connections are:");
@@ -39,7 +38,7 @@ public class ConnectionHandler implements IConnectionHandler {
                 }
                 System.out.println();
             }
-        }, 60*1000, 60*1000);
+        }, 30*60*1000, 30*60*1000);
     }
 
     @Override
@@ -53,7 +52,7 @@ public class ConnectionHandler implements IConnectionHandler {
 
             Bruger bruger = ba.hentBruger(username, password);
             if (bruger.brugernavn.equals(username) && bruger.adgangskode.equals(password)) {
-                System.out.println(df.format(calendar.getTimeInMillis()) + "Client#" + clientID + " successfully logged in as '" + username + "'.");
+                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + clientID + " successfully logged in as '" + username + "'.");
                 connections.put(clientID, username);
                 return true;
             }
@@ -61,7 +60,7 @@ public class ConnectionHandler implements IConnectionHandler {
             e.printStackTrace();
             return false;
         } catch (Exception e2) {
-            System.out.println(df.format(calendar.getTimeInMillis()) + "Client#" + clientID + " failed to login.");
+            System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + clientID + " failed to login.");
             return false;
         }
         return false;
@@ -76,7 +75,7 @@ public class ConnectionHandler implements IConnectionHandler {
         }
 
         galgelogik.nulstil();
-        System.out.println(df.format(calendar.getTimeInMillis()) + "Client#" + clientID + " started at game.");
+        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + clientID + " started at game.");
     }
 
     @Override
@@ -123,14 +122,14 @@ public class ConnectionHandler implements IConnectionHandler {
             }
         } while (usedID);
         connections.put(randomID, "unknown");
-        System.out.println(df.format(calendar.getTimeInMillis()) + "Client#" + randomID + " connected and received an ID.");
+        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + randomID + " connected and received an ID.");
         return randomID;
     }
 
     @Override
     public void informDisconnect(int clientID) {
         connections.remove(clientID);
-        System.out.println(df.format(calendar.getTimeInMillis()) + "Client#" + clientID + " disconnected.");
+        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Client#" + clientID + " disconnected.");
     }
 
 }

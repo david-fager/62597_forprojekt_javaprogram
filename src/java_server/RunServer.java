@@ -7,13 +7,12 @@ import java.util.Calendar;
 
 public class RunServer {
     public static void main(String[] args) {
-        Calendar calendar = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("[dd-MM-yyyy HH:mm:ss] - ");
 
-        System.out.println(df.format(calendar.getTimeInMillis()) + "Starting server ... ");
+        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Starting server");
         ConnectionHandler ch = new ConnectionHandler();
         ch.serverStatus();
         Endpoint.publish("http://[::]:9920/hangman", ch);
-        System.out.println(df.format(calendar.getTimeInMillis()) + "Server started.");
+        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Server started");
     }
 }
