@@ -34,9 +34,9 @@ public class RunClient {
             System.out.println("lokal/fjern");
             String response = scanner.nextLine().toLowerCase();
             if (response.equals("lokal")) {
-                url = new URL("http://localhost:9920/hangman_remote?wsdl"); // Local testing
+                url = new URL("http://localhost:58008/hangman_remote?wsdl"); // Local testing
             } else if (response.equals("fjern")) {
-                url = new URL("http://s185120@dist.saluton.dk:9920/hangman_remote?wsdl"); // dist.saluton.dk testing
+                url = new URL("http://s185120@dist.saluton.dk:58008/hangman_remote?wsdl"); // dist.saluton.dk testing
             }
 
             System.out.print("Forbinder ... ");

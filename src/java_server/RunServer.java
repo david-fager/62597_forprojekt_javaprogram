@@ -21,12 +21,12 @@ public class RunServer {
 
         // SOAP for the javaprogram terminal client
         chsoap = new ConnectionHandlerSOAP();
-        Endpoint.publish("http://[::]:9920/hangman_remote", chsoap);
+        Endpoint.publish("http://[::]:58008/hangman_remote", chsoap);
 
         // RMI server for the javalin webserver
-        java.rmi.registry.LocateRegistry.createRegistry(8920); // start rmiregistry i server-JVM
+        java.rmi.registry.LocateRegistry.createRegistry(9920); // start rmiregistry i server-JVM
         chrmi = new ConnectionHandlerRMI();
-        Naming.rebind("rmi://localhost:8920/hangman_local", chrmi);
+        Naming.rebind("rmi://localhost:9920/hangman_local", chrmi);
 
         System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Server started");
 

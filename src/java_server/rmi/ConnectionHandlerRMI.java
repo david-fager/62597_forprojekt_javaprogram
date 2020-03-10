@@ -44,7 +44,7 @@ public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnec
 
     @Override
     public String getWord(int sesID) {
-        return null;
+        return "hejmeddigjeghedderkaj";
     }
 
     @Override
