@@ -138,11 +138,9 @@ public class RunClient {
                     page = 0;
                 } else {
                     if (input.equals("hent bruger")) {
-                        System.out.print("Kodeord: ");
-                        String password = scanner.nextLine();
 
                         System.out.println("Modtog:");
-                        System.out.println(server.getFullUser(sessionID, password).toString());
+                        System.out.println(server.getFullUser(sessionID).toString());
                     } else if (input.equals("skift kode")) {
 
                         System.out.print("Gamle kodeord: ");

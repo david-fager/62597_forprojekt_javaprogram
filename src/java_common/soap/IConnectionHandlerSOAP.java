@@ -41,7 +41,7 @@ public interface IConnectionHandlerSOAP {
     boolean didPlayerWin(int sesID);
 
     @WebMethod
-    Bruger getFullUser(int sesID, String password);
+    Bruger getFullUser(int sesID);
 
     @WebMethod
     Bruger changePassword(int sesID, String oldPassword, String newPassword);

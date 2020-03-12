@@ -3,6 +3,7 @@ package java_server;
 public class Session {
     private int id = 0;
     private String username = "unknown";
+    private String password = "";
     private Galgelogik galgelogik;
 
     public int getId() {
@@ -36,5 +37,13 @@ public class Session {
         } else {
             return "Session#" + id + "\tUsername: " + username + "\tHangman: No Object.";
         }
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

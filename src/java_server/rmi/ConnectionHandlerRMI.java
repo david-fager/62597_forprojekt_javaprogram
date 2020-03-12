@@ -66,8 +66,8 @@ public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnec
     }
 
     @Override
-    public Bruger getFullUser(int sesID, String password) {
-        return chsoap.getFullUser(sesID, password);
+    public Bruger getFullUser(int sesID) {
+        return chsoap.getFullUser(sesID);
     }
 
     @Override

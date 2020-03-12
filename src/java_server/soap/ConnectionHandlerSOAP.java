@@ -37,6 +37,7 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
             if (bruger.brugernavn.equals(username) && bruger.adgangskode.equals(password)) {
                 System.out.println(getTime() + "Session#" + sesID + " successfully logged in as '" + username + "'.");
                 sessions.get(sesID).setUsername(username);
+                sessions.get(sesID).setPassword(password);
                 return true;
             }
         } catch (MalformedURLException e) {
@@ -133,8 +134,8 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
-    public Bruger getFullUser(int sesID, String password) {
-        return ba.hentBruger(sessions.get(sesID).getUsername(), password);
+    public Bruger getFullUser(int sesID) {
+        return ba.hentBruger(sessions.get(sesID).getUsername(), sessions.get(sesID).getPassword());
     }
 
     @Override
