@@ -9,7 +9,7 @@ public interface IConnectionHandlerRMI extends java.rmi.Remote {
 
     boolean login(int sesID, String username, String password) throws java.rmi.RemoteException;
 
-    void startGame(int sesID, int i) throws Exception;
+    boolean startGame(int sesID, int i) throws Exception;
 
     boolean isGameOver(int sesID) throws java.rmi.RemoteException;
 
@@ -23,7 +23,7 @@ public interface IConnectionHandlerRMI extends java.rmi.Remote {
 
     int informConnect() throws java.rmi.RemoteException;
     
-    void informDisconnect(int clientID) throws java.rmi.RemoteException;
+    boolean informDisconnect(int sesID) throws java.rmi.RemoteException;
 
     boolean didPlayerWin(int sesID) throws java.rmi.RemoteException;
 
@@ -31,7 +31,7 @@ public interface IConnectionHandlerRMI extends java.rmi.Remote {
 
     Bruger changePassword(int sesID, String oldPassword, String newPassword) throws java.rmi.RemoteException;
 
-    void forgotPassword(int sesID, String message) throws java.rmi.RemoteException;
+    boolean forgotPassword(int sesID, String message) throws java.rmi.RemoteException;
 
     Bruger getPublicUser(int sesID) throws java.rmi.RemoteException;
 

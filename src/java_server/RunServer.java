@@ -25,7 +25,7 @@ public class RunServer {
 
         // RMI server for the javalin webserver
         java.rmi.registry.LocateRegistry.createRegistry(9920); // start rmiregistry i server-JVM
-        chrmi = new ConnectionHandlerRMI();
+        chrmi = new ConnectionHandlerRMI(chsoap);
         Naming.rebind("rmi://localhost:9920/hangman_local", chrmi);
 
         System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Server started");

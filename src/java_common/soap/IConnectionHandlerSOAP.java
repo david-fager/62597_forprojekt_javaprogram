@@ -14,7 +14,7 @@ public interface IConnectionHandlerSOAP {
     boolean login(int sesID, String username, String password);
 
     @WebMethod
-    void startGame(int sesID, int i) throws Exception;
+    boolean startGame(int sesID, int i) throws Exception;
 
     @WebMethod
     boolean isGameOver(int sesID);
@@ -35,7 +35,7 @@ public interface IConnectionHandlerSOAP {
     int informConnect();
 
     @WebMethod
-    void informDisconnect(int clientID);
+    boolean informDisconnect(int sesID);
 
     @WebMethod
     boolean didPlayerWin(int sesID);
@@ -47,7 +47,7 @@ public interface IConnectionHandlerSOAP {
     Bruger changePassword(int sesID, String oldPassword, String newPassword);
 
     @WebMethod
-    void forgotPassword(int sesID, String message);
+    boolean forgotPassword(int sesID, String message);
 
     @WebMethod
     Bruger getPublicUser(int sesID);

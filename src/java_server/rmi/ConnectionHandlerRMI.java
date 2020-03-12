@@ -2,84 +2,87 @@ package java_server.rmi;
 
 import brugerautorisation.data.Bruger;
 import java_common.rmi.IConnectionHandlerRMI;
+import java_server.soap.ConnectionHandlerSOAP;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnectionHandlerRMI {
+    private ConnectionHandlerSOAP chsoap;
 
-    public ConnectionHandlerRMI() throws RemoteException {
+    public ConnectionHandlerRMI(ConnectionHandlerSOAP chsoap) throws RemoteException {
+        this.chsoap = chsoap;
     }
 
     @Override
     public boolean login(int sesID, String username, String password) {
-        return false;
+        return chsoap.login(sesID, username, password);
     }
 
     @Override
-    public void startGame(int sesID, int i) throws Exception {
-
+    public boolean startGame(int sesID, int i) throws Exception {
+        return chsoap.startGame(sesID, i);
     }
 
     @Override
     public boolean isGameOver(int sesID) {
-        return false;
+        return chsoap.isGameOver(sesID);
     }
 
     @Override
     public boolean guessLetter(int sesID, String letter) {
-        return false;
+        return chsoap.guessLetter(sesID, letter);
     }
 
     @Override
     public String getVisibleWord(int sesID) {
-        return null;
+        return chsoap.getVisibleWord(sesID);
     }
 
     @Override
     public ArrayList<String> getUsedLetters(int sesID) {
-        return null;
+        return chsoap.getUsedLetters(sesID);
     }
 
     @Override
     public String getWord(int sesID) {
-        return "hejmeddigjeghedderkaj";
+        return chsoap.getWord(sesID);
     }
 
     @Override
     public int informConnect() {
-        return 0;
+        return chsoap.informConnect();
     }
 
     @Override
-    public void informDisconnect(int clientID) {
-
+    public boolean informDisconnect(int sesID) {
+        return chsoap.informDisconnect(sesID);
     }
 
     @Override
     public boolean didPlayerWin(int sesID) {
-        return false;
+        return chsoap.didPlayerWin(sesID);
     }
 
     @Override
     public Bruger getFullUser(int sesID, String password) {
-        return null;
+        return chsoap.getFullUser(sesID, password);
     }
 
     @Override
     public Bruger changePassword(int sesID, String oldPassword, String newPassword) {
-        return null;
+        return chsoap.changePassword(sesID, oldPassword, newPassword);
     }
 
     @Override
-    public void forgotPassword(int sesID, String message) {
-
+    public boolean forgotPassword(int sesID, String message) {
+        return chsoap.forgotPassword(sesID, message);
     }
 
     @Override
     public Bruger getPublicUser(int sesID) {
-        return null;
+        return chsoap.getPublicUser(sesID);
     }
 
 }

@@ -50,10 +50,11 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
-    public void startGame(int sesID, int i) throws Exception {
+    public boolean startGame(int sesID, int i) throws Exception {
         sessions.get(sesID).setGalgelogik(new Galgelogik(i));
         sessions.get(sesID).getGalgelogik().nulstil();
         System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " started at game.");
+        return true;
     }
 
     @Override
@@ -115,8 +116,9 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
-    public void informDisconnect(int sesID) {
+    public boolean informDisconnect(int sesID) {
         System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " disconnected.");
+        return true;
     }
 
     @Override
@@ -141,8 +143,9 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
-    public void forgotPassword(int sesID, String message) {
+    public boolean forgotPassword(int sesID, String message) {
         ba.sendGlemtAdgangskodeEmail(sessions.get(sesID).getUsername(), message);
+        return true;
     }
 
     @Override
