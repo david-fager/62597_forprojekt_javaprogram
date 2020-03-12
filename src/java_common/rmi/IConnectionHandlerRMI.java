@@ -31,7 +31,7 @@ public interface IConnectionHandlerRMI extends java.rmi.Remote {
 
     Bruger changePassword(int sesID, String oldPassword, String newPassword) throws java.rmi.RemoteException;
 
-    boolean forgotPassword(int sesID, String message) throws java.rmi.RemoteException;
+    boolean forgotPassword(String username, String message) throws java.rmi.RemoteException;
 
     Bruger getPublicUser(int sesID) throws java.rmi.RemoteException;
 

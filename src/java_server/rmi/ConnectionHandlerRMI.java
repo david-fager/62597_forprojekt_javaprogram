@@ -76,8 +76,8 @@ public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnec
     }
 
     @Override
-    public boolean forgotPassword(int sesID, String message) {
-        return chsoap.forgotPassword(sesID, message);
+    public boolean forgotPassword(String username, String message) {
+        return chsoap.forgotPassword(username, message);
     }
 
     @Override

@@ -153,11 +153,13 @@ public class RunClient {
                         System.out.println("Modtog:");
                         System.out.println(server.changePassword(sessionID, oldPassword, newPassword).toString());
                     } else if (input.equals("glemt kode")) {
+                        System.out.println("Angiv dit brugernavn:");
+                        String username = scanner.nextLine();
 
                         System.out.println("Angiv en valgfri besked:");
                         String message = scanner.nextLine();
 
-                        server.forgotPassword(sessionID, message);
+                        server.forgotPassword(username, message);
                         System.out.println("Informationer om glemt adgangskode er tilsendt din e-mail.");
                     } else if (input.equals("off. bruger")) {
 

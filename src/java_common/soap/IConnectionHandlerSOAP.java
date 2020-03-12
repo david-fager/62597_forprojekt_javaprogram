@@ -47,7 +47,7 @@ public interface IConnectionHandlerSOAP {
     Bruger changePassword(int sesID, String oldPassword, String newPassword);
 
     @WebMethod
-    boolean forgotPassword(int sesID, String message);
+    boolean forgotPassword(String username, String message);
 
     @WebMethod
     Bruger getPublicUser(int sesID);

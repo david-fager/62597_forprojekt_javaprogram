@@ -143,8 +143,8 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
-    public boolean forgotPassword(int sesID, String message) {
-        ba.sendGlemtAdgangskodeEmail(sessions.get(sesID).getUsername(), message);
+    public boolean forgotPassword(String username, String message) {
+        ba.sendGlemtAdgangskodeEmail(username, message);
         return true;
     }
 
