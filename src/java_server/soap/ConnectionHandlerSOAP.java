@@ -35,7 +35,7 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
 
             Bruger bruger = ba.hentBruger(username, password);
             if (bruger.brugernavn.equals(username) && bruger.adgangskode.equals(password)) {
-                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " successfully logged in as '" + username + "'.");
+                System.out.println(getTime() + "Session#" + sesID + " successfully logged in as '" + username + "'.");
                 sessions.get(sesID).setUsername(username);
                 return true;
             }
@@ -43,7 +43,7 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
             e.printStackTrace();
             return false;
         } catch (Exception e2) {
-            System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " failed to login.");
+            System.out.println(getTime() + "Session#" + sesID + " failed to login.");
             return false;
         }
         return false;
@@ -53,7 +53,7 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     public boolean startGame(int sesID, int i) throws Exception {
         sessions.get(sesID).setGalgelogik(new Galgelogik(i));
         sessions.get(sesID).getGalgelogik().nulstil();
-        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " started at game.");
+        System.out.println(getTime() + "Session#" + sesID + " started at game.");
         return true;
     }
 
@@ -96,9 +96,9 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
         int randomSessionID, safetyStepCounter = 0;
         do {
             if (safetyStepCounter++ > MAX_SESSIONS) {
-                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
-                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
-                System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
+                System.out.println(getTime() + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
+                System.out.println(getTime() + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
+                System.out.println(getTime() + "SERVER ERROR - NO MORE AVAILABLE IDS - MUST RE-LAUNCH PROGRAM");
                 return -1;
             }
             inUse = false;
@@ -111,13 +111,13 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
         sessions.put(randomSessionID, newSession);
         newSession.setId(randomSessionID);
 
-        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + newSession.getId() + " connected and received an ID.");
+        System.out.println(getTime() + "Session#" + newSession.getId() + " connected and received an ID.");
         return newSession.getId();
     }
 
     @Override
     public boolean informDisconnect(int sesID) {
-        System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " disconnected.");
+        System.out.println(getTime() + "Session#" + sesID + " disconnected.");
         return true;
     }
 
@@ -125,9 +125,9 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     public boolean didPlayerWin(int sesID) {
         boolean won = sessions.get(sesID).getGalgelogik().erSpilletVundet();
         if (won) {
-            System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " won a game.");
+            System.out.println(getTime() + "Session#" + sesID + " won a game.");
         } else {
-            System.out.println(df.format(Calendar.getInstance().getTimeInMillis()) + "Session#" + sesID + " lost a game.");
+            System.out.println(getTime() + "Session#" + sesID + " lost a game.");
         }
         return won;
     }
@@ -163,6 +163,10 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
             System.out.println("No sessions yet");
         }
         System.out.println();
+    }
+
+    private String getTime() {
+        return df.format(Calendar.getInstance().getTimeInMillis());
     }
 
 }
