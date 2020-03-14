@@ -25,6 +25,11 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     private DateFormat df = new SimpleDateFormat("[dd-MM-yyyy HH:mm:ss] ");
 
     @Override
+    public boolean idRecognized(int sesID) {
+        return sessions.containsKey(sesID);
+    }
+
+    @Override
     public boolean login(int sesID, String username, String password) {
 
         try {

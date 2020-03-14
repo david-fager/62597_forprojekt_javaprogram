@@ -16,6 +16,11 @@ public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnec
     }
 
     @Override
+    public boolean idRecognized(int sesID) throws RemoteException {
+        return chsoap.idRecognized(sesID);
+    }
+
+    @Override
     public boolean login(int sesID, String username, String password) {
         return chsoap.login(sesID, username, password);
     }

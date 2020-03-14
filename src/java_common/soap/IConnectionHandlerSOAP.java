@@ -11,6 +11,9 @@ import java.util.ArrayList;
 public interface IConnectionHandlerSOAP {
 
     @WebMethod
+    boolean idRecognized(int sesID);
+
+    @WebMethod
     boolean login(int sesID, String username, String password);
 
     @WebMethod
