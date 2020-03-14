@@ -173,12 +173,12 @@ public class Galgelogik {
                 replaceAll(" [a-zæøå] ", " "). // fjern 1-bogstavsord
                 replaceAll(" [a-zæøå][a-zæøå] ", " "); // fjern 2-bogstavsord
 
-        System.out.println("data = " + data);
-        System.out.println("data = " + Arrays.asList(data.split("\\s+")));
+        //System.out.println("data = " + data);
+        //System.out.println("data = " + Arrays.asList(data.split("\\s+")));
         muligeOrd.clear();
         muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
-        System.out.println("muligeOrd = " + muligeOrd);
+        //System.out.println("muligeOrd = " + muligeOrd);
         nulstil();
     }
 
