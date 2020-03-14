@@ -86,6 +86,11 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     }
 
     @Override
+    public int numberWrongGuesses(int sesID) {
+        return sessions.get(sesID).getGalgelogik().getAntalForkerteBogstaver();
+    }
+
+    @Override
     public String getWord(int sesID) {
         return sessions.get(sesID).getGalgelogik().getOrdet();
     }

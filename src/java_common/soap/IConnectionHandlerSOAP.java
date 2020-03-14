@@ -29,6 +29,9 @@ public interface IConnectionHandlerSOAP {
     ArrayList<String> getUsedLetters(int sesID);
 
     @WebMethod
+    int numberWrongGuesses(int sesID);
+
+    @WebMethod
     String getWord(int sesID);
 
     @WebMethod

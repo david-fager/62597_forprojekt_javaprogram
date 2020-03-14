@@ -46,6 +46,11 @@ public class ConnectionHandlerRMI extends UnicastRemoteObject implements IConnec
     }
 
     @Override
+    public int numberWrongGuesses(int sesID) {
+        return chsoap.numberWrongGuesses(sesID);
+    }
+
+    @Override
     public String getWord(int sesID) {
         return chsoap.getWord(sesID);
     }
