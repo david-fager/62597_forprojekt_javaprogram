@@ -136,9 +136,13 @@ public class ConnectionHandlerSOAP implements IConnectionHandlerSOAP {
     public boolean didPlayerWin(int sesID) {
         boolean won = sessions.get(sesID).getGalgelogik().erSpilletVundet();
         if (won) {
-            System.out.println(getTime() + "Session#" + sesID + " won a game.");
+            if (sessions.get(sesID).getGalgelogik().erSpilletSlut()) {
+                System.out.println(getTime() + "Session#" + sesID + " won a game.");
+            }
         } else {
-            System.out.println(getTime() + "Session#" + sesID + " lost a game.");
+            if (sessions.get(sesID).getGalgelogik().erSpilletSlut()) {
+                System.out.println(getTime() + "Session#" + sesID + " lost a game.");
+            }
         }
         return won;
     }
